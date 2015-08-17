@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
+
+Route::get('home', 'HomeController@index');
+Route::post('home/login', 'AdminController@login');
