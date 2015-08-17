@@ -8,8 +8,8 @@ class User extends Model
 {
     //
     protected $table = 'user';
-    public $primaryKey = "ID";
-    //public $timestamps = false;
+    protected $primaryKey = "ID";
+    public $timestamps = false;
     
     /**
      * get data.
@@ -39,24 +39,12 @@ class User extends Model
      * @param  
      * @return boolean
      **/
-    public function updateById($id,$field = ['*'],$params = null) 
+    public function updateById($id,$params = null) 
     {
-        if(null == $id || null == $params) 
+        if(null == $id || !is_array($params)) {
             return false;
-        
-        $user = User::find($id,$field);
-       
-        if(!empty($params) && is_array($params)) {
-            
-//            foreach($params as $field => $value) {
-//                $user -> $field = $value ;
-//            }
-            $user->session_id = 'xxx';
-            
-        }
-$user->session_id = 'xxx';
-         $user -> push();
-
-var_dump($user);die;
+        } else {
+            return User::where('ID', $id)->update($params);
+        }    
     }
 }

@@ -29,21 +29,27 @@ class HomeController extends Controller
     {
         $obj = new User;
         $arrUser = $obj->getList (
-                        ['ID'],
-                        ['username' => $request->username,
-                         'password' => $request->password]
+                        ['ID','password'],
+                        ['username' => $request->username]
                     );
-        if(1 === count($arrUser)) {
-            $result = $obj->updateById (
-                            $arrUser[0]['ID'],
-                            ['session_id','login_time'],
-                            ['session_id' => '1111',
-                             'login_time' => '2015-08-11 15:52:45']    
-                        );
+        if(1 === count($arrUser) ) {
+            if($request->password == $arrUser[0]['password']) {
+                
+                //update session id
+                $result = $obj->updateById (
+                                $arrUser[0]['ID'],
+                                ['session_id' => Session::getId(),
+                                 'login_time' => date('Y-m-d H:i:s')]    
+                            );
+                $data = (false !== $result)? "Ok" : "Error";
+            } else {
+                $data = "Wrong password";
+            }    
         } else {
-            return '';
+            $data =  "User not found";
         }
-        echo $arrUser[0]['ID'];die;
+        
+        echo $data;die;
     }
 
 }
