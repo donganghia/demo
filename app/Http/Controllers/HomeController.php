@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -27,7 +27,23 @@ class HomeController extends Controller
      */
     public function login(Request $request)
     {
-        //
+        $obj = new User;
+        $arrUser = $obj->getList (
+                        ['ID'],
+                        ['username' => $request->username,
+                         'password' => $request->password]
+                    );
+        if(1 === count($arrUser)) {
+            $result = $obj->updateById (
+                            $arrUser[0]['ID'],
+                            ['session_id','login_time'],
+                            ['session_id' => '1111',
+                             'login_time' => '2015-08-11 15:52:45']    
+                        );
+        } else {
+            return '';
+        }
+        echo $arrUser[0]['ID'];die;
     }
 
 }

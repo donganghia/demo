@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('home', 'HomeController@index');
-Route::post('home/login', 'AdminController@login');
+Route::post('home/login', 'HomeController@login');
