@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+div, td {font-family:Arial;font-size:10pt}
+.ui-icon {display: inline-flex; margin-left: 12;cursor:pointer}
+#bodyJobsList tr:hover{background-color:#D2D2D2}
+#bodyJobsList tr:active {background-color:#F93}
+.chk_box {text-align:left; padding-left:20px;}
+.chk_phase{display:block}
+.current_job{background-color:#F93}
+#bodyJobsList .current_job:hover{background-color:#F93}
+
+.fixed{
+	font-size:10px;
+	margin-right:8px;
+}
+.chk_fixed{
+	margin-right:12px;
+}
+button {
+	background-color:#378de5;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:8px 10px;
+	border:none;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+	min-width:50px;
+}
+button:hover {
+	background-color:#79bbff;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+button:focus{
+    outline: 0;
+}
+.function_title{
+	color:#378de5;
+	font-family:Arial;
+	font-size:16pt;
+	font-weight:550;
+	margin:5px 0px;
+}
