@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -32,6 +33,8 @@ class HomeController extends Controller
                         ['ID','password'],
                         ['username' => $request->username]
                     );
+        
+        $success = false;
         if(1 === count($arrUser) ) {
             if($request->password == $arrUser[0]['password']) {
                 
@@ -41,15 +44,19 @@ class HomeController extends Controller
                                 ['session_id' => Session::getId(),
                                  'login_time' => date('Y-m-d H:i:s')]    
                             );
-                $data = (false !== $result)? "Ok" : "Error";
+                $message = (false !== $result)? "Ok" : "Error";
+                $success  = (false !== $result)? true : false;
             } else {
-                $data = "Wrong password";
+                $message = "Wrong password";
             }    
         } else {
-            $data =  "User not found";
+            $message =  "User not found";
         }
-        
-        echo $data;die;
+       
+         return response()->json(
+                    [ 'success' => $success,
+                      'data'    => $message ]
+                ); 
     }
 
 }

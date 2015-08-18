@@ -387,9 +387,9 @@ randomCell();
         url: "{{ URL::to('home/login') }}",
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         data: { username: $('#username').val(),password:$('#password').val() },
-        success: function(data) {
+        success: function(response) {
             is_logging_in=false;
-            if(data=="ok")
+            if(response.success == true)
             {
                                     if(_redirect) 
                                             window.location.href=_redirect;
@@ -401,7 +401,7 @@ randomCell();
                                     }
                             }
             else
-                    alert(data);
+                    alert(response.data);
         },
         error: function() {
             alert('Error');
