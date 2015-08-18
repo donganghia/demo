@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Session;
+use Redirect;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -106,7 +107,7 @@ class HomeController extends Controller
     {
         User::where('session_id', Session::getId())->update(['session_id'=>'']);
         LogUser::where('session_id', Session::getId())->update(['logout_time'=>date('Y-m-d H:i:s')]);
-        //return Redirect::to('home/login');
+        return Redirect::to('home');
     }
 
 
