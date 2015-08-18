@@ -197,6 +197,14 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        
+        //NghiaT
+        'Form'      => Illuminate\Html\FormFacade::class,
+        'HTML'      => Illuminate\Html\HtmlFacade::class,
+        'Datatables'  =>yajra\Datatables\Datatables::class,
+        'Flash'     =>  laracasts\Flash\Flash::class,
+        //'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        //'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 
