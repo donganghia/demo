@@ -361,7 +361,7 @@ $is_logged_in = null;
 <script>
 function logout()
 {
-	window.location.href="../logout";
+	window.location.href="home/logout";
 }
 var is_logging_in=false;
 function login()
@@ -615,9 +615,11 @@ if($is_logged_in)
 {
 	echo "layoutUserLoggedIn();";
 }
-
-//echo "\r\nvar _redirect='".($_REQUEST['redirect']?base64_decode($_REQUEST['redirect']):"")."';";
-?>
+if(isset($_REQUEST['redirect']))
+    echo "\r\nvar _redirect='".($_REQUEST['redirect']?base64_decode($_REQUEST['redirect']):"")."';";
+else { ?>
+    var _redirect= false;
+<?php }?>
 	</script>
         
     </body>

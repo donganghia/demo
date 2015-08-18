@@ -8,6 +8,7 @@ use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\LogUser;
 class HomeController extends Controller
 {
     /**
@@ -44,6 +45,17 @@ class HomeController extends Controller
                                 ['session_id' => Session::getId(),
                                  'login_time' => date('Y-m-d H:i:s')]    
                             );
+                
+                //insert log
+                if(false !== $result) {
+                    $result =   LogUser::insert(
+                                   ['username' => $request->username,
+                                    'login_time' => date('Y-m-d H:i:s'),
+                                    'session_id' => Session::getId(),
+                                    'ip'  => self::get_client_ip() ]
+                                );
+                }
+                    
                 $message = (false !== $result)? "Ok" : "Error";
                 $success  = (false !== $result)? true : false;
             } else {
@@ -58,5 +70,44 @@ class HomeController extends Controller
                       'data'    => $message ]
                 ); 
     }
+    
+    /**
+     * 
+     * @param  
+     * @return IP
+     */
+    public function get_client_ip() 
+    {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+           $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
+    
+    /**
+     * 
+     *
+     * @param  
+     * @return 
+     */
+    public function logout(Request $request)
+    {
+        User::where('session_id', Session::getId())->update(['session_id'=>'']);
+        LogUser::where('session_id', Session::getId())->update(['logout_time'=>date('Y-m-d H:i:s')]);
+        //return Redirect::to('home/login');
+    }
+
 
 }
