@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\LogUser;
+use App\Helpers\EnergyLib;
+
 class HomeController extends Controller
 {
     /**
@@ -19,7 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        $is_logged_in = EnergyLib::isLoggedIn();
+        $current_username =  Session::get('current_username') ;
+        return view('home', compact('is_logged_in','current_username'));
     }
 
     /**
@@ -105,9 +110,12 @@ class HomeController extends Controller
      */
     public function logout(Request $request)
     {
-        User::where('session_id', Session::getId())->update(['session_id'=>'']);
-        LogUser::where('session_id', Session::getId())->update(['logout_time'=>date('Y-m-d H:i:s')]);
-        return Redirect::to('home');
+        if(EnergyLib::isLoggedIn())
+        {
+            User::where('session_id', Session::getId())->update(['session_id'=>'']);
+            LogUser::where('session_id', Session::getId())->update(['logout_time'=>date('Y-m-d H:i:s')]);
+            return Redirect::to('home');
+        }    
     }
 
 

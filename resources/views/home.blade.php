@@ -1,7 +1,7 @@
 <?php
 //include_once('../lib/db.php');
-$current_username = null;
-$is_logged_in = null;
+//$current_username = null;
+//$is_logged_in = null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
