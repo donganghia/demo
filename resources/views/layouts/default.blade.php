@@ -1,8 +1,3 @@
-<?php
-//include_once('../lib/db.php');
-//$current_username = null;
-//$is_logged_in = null;
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -524,7 +519,7 @@ menu["allocation"]=[
 menu["forecast"]=[
 	];
 menu["delivery"]=[
-		{menutext:"CONTRACT ADMIN",desc:"",url:"../pd/?func=contract_admin"},
+		{menutext:"CONTRACT ADMIN",desc:"",url:"cp"},
 		{menutext:"CARGO ADMIN",desc:"",url:"../pd/?func=cargo_admin"},
 		{menutext:"CARGO ACTION",desc:"",url:"../pd/?func=cargo_action"},
 		{menutext:"CARGO MANAGEMENT",desc:"",url:"../pd/?func=cargo_management"},

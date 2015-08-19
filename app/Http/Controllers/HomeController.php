@@ -24,7 +24,7 @@ class HomeController extends Controller
         
         $is_logged_in = EnergyLib::isLoggedIn();
         $current_username =  Session::get('current_username') ;
-        return view('home', compact('is_logged_in','current_username'));
+        return view('pages.home', compact('is_logged_in','current_username'));
     }
 
     /**
