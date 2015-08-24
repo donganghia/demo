@@ -1,19 +1,33 @@
-<title>Energy Builder</title>
-<meta charset="UTF-8" />
+<title>Energy Builder - Product Delivery</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta name="description" content="Creative CSS3 Animation Menus" />
-<meta name="keywords" content="menu, navigation, animation, transition, transform, rotate, css3, web design, component, icon, slide" />
-<meta name="author" content="Codrops" />
-<link rel="shortcut icon" href="../favicon.ico"> 
-<link rel="stylesheet" type="text/css" href="../css/demo.css" />
-<link rel="stylesheet" type="text/css" href="../css/style8.css" />
-<link rel="stylesheet" href="../css/hexagon.css?r=2">
+<meta  http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<!-- -->
 <link rel="stylesheet" href="../index.htm_files/css3menu0/style.css" type="text/css" />
 
-<link href='../common/css/css.css' rel='stylesheet' type='text/css' />			<!--http://fonts.googleapis.com/css?family=Terminal+Dosis-->
-<script src="../common/js/jquery-1.9.1.js"></script> 
-
-<link rel="stylesheet" href="../common/css/reveal.css">
-<script type="text/javascript" src="../common/js/jquery.reveal.js"></script>
+ <link rel="stylesheet" href="../common/css/jquery-ui.css" />
+ 
+    <script src="../cdn/jquery-1.10.2.min.js"></script>
+    <script  src="../common/lm/colResizable-1.3.min.js"></script>
+	<script src="../common/js/jquery-ui.js"></script>
+	<script src="../common/utils.js"></script>
+    <script src="../config/js/jquery-ui-timepicker-addon.js"></script>
+    <script src="../config/js/numericInput.min.js"></script>
+<link rel="stylesheet" href="css/style.css" />
+<style>
+.row_activity:hover {background:#a8c5ff}
+table td {font-size:10pt}
+.readonlytext {border:0px solid #fff;background:none}
+input {border:1px solid #888}
+th {font-size: 9pt; text-align: left;}
+a {font-size: 9pt;}
+.selectedRow {background:#a8c5ff};
+</style>
+<!-- Inputmask
+<script src="cdn/jquery.inputmask.js"></script>
+-->
+<!-- Freeze column and row -->
+<link rel="stylesheet" href="cdn/jquery.dataTables.css" />
+<script type="text/javascript" charset="utf8" src="cdn/jquery.dataTables.js"></script>
+<script type="text/javascript" src="cdn/dataTables.fixedColumns.js"></script>
