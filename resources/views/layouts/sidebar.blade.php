@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    <title>Product Delivery - @yield('title')</title>
     @include('includes.head')
 </head>
 <body>

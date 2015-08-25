@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-class ContractProgramController extends Controller
+use App\Http\Controllers\ProductDeliveryController;
+class ContractProgramController extends ProductDeliveryController
 {
     /**
      * Display a listing of the resource.

@@ -1,4 +1,3 @@
-<title>Energy Builder - Product Delivery</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta  http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
